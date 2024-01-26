@@ -29,7 +29,6 @@ form.addEventListener('submit', function (e) {
 });
 };
 
-submitSearch();
 
 const makeArrowButtonsWork = () => {
 prevButton.addEventListener('click', function () {
@@ -43,7 +42,6 @@ nextButton.addEventListener('click', function () {
 });
 }
 
-makeArrowButtonsWork();
 const searchAndDisplay = async (queryParam) => {
     let response = await fetch(`https://api.unsplash.com/search/photos?page=1&query=${queryParam}&client_id=${accessKey}`);
     let data = await response.json();
@@ -116,7 +114,6 @@ document.addEventListener('keydown', function(event) {
 
 
 
- lemmeStyleTheImageContainerAndMakeTheArrowsWork()
 
 
 
@@ -137,9 +134,7 @@ accept.addEventListener('click', () => {
     cookieNotice.style.display = 'none';
   }
 
-  if (document.cookie === 'cookieAccepted=true') {
-    search(queryParam);
-};
+ 
 
 
 
@@ -185,4 +180,7 @@ if (document.cookie.includes('darkMode=true')) {
 }
 
 }
+submitSearch();
 toggleDarkMode();
+lemmeStyleTheImageContainerAndMakeTheArrowsWork()
+makeArrowButtonsWork();

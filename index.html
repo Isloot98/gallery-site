@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Image Search</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="outer-div">
+    <div class="dark-mode-toggle">
+        <label class="switch" id="switch">
+            <input type="checkbox" id="checkbox" checked aria-checked="true" tabindex="0">
+            <span class="slider round"></span>
+        </label>
+        <p id="message">Toggle Dark Mode</p>
+    </div>
+    <div class="outer-div" id="live-region" aria-live="polite">
+        
         <div class="search-div">
-            <form id="form">
-                <input type="text" id="input" placeholder="what do you want to search">
-                <button type="submit" id="submit">Search</button>
+            <form id="form" role="search" aria-label="searchLabel">
+                <input type="text" id="input" placeholder="what do you want to search" tabindex="1">
+                <button type="submit" id="submit" tabindex="2">Search</button>
             </form>
         </div>
 
-         <div class="results-slider"> 
-            <button id="prevButton" class="arrow-button">&#9664;</button>
+         <div class="results-slider" role="group" aria-label="Image Slider" > 
+            <button id="prevButton" class="arrow-button" tabindex="3">&#9664;</button>
             <div class="img-container"></div>
-            <button id="nextButton" class="arrow-button">&#9654;</button>
+            <button id="nextButton" class="arrow-button" tabindex="4">&#9654;</button>
+        </div>
+        
+
+        <div id="cookie-notice">
+            <h2>Cookie Notice</h2>
+            <p>The cookie allows you to save your dark mode preferences. The toggle button is on the top left of the page</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="button" tabindex="5">Accept</button>
+                <button id="decline-cookies" class="button" tabindex="6">Decline</button>
+            </div>
         </div>
     </div>
+    
 </body>
 </html>

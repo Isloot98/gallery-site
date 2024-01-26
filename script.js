@@ -30,17 +30,7 @@ form.addEventListener('submit', function (e) {
 };
 
 
-const makeArrowButtonsWork = () => {
-prevButton.addEventListener('click', function () {
-    currentIndex = (currentIndex - 1 + imageContainer.children.length) % imageContainer.children.length;
-    updateBackground(currentIndex);
-});
 
-nextButton.addEventListener('click', function () {
-    currentIndex = (currentIndex + 1) % imageContainer.children.length;
-    updateBackground(currentIndex);
-});
-}
 
 const searchAndDisplay = async (queryParam) => {
     let response = await fetch(`https://api.unsplash.com/search/photos?page=1&query=${queryParam}&client_id=${accessKey}`);
@@ -81,7 +71,7 @@ const updateBackground = (index) => {
 
 
 
-const lemmeStyleTheImageContainerAndMakeTheArrowsWork = () => {
+const lemmeStyleTheImageContainerAndMakeTheArrowKeysWorkAndAlsoNowThisIncludesTheArrowButtons = () => {
 
    imageContainer.addEventListener('click', function(event) {
     const clickedImage = event.target;
@@ -110,7 +100,32 @@ document.addEventListener('keydown', function(event) {
         updateBackground(currentIndex);
         updatescrollbar(clickedImage);
     }
+
+  
 })
+prevButton.addEventListener('click', function () {
+    const previousIndex = currentIndex;
+        clickedImage = imageContainer.children[previousIndex];
+        clickedImage.classList.remove('selected');
+    currentIndex = (currentIndex - 1 + imageContainer.children.length) % imageContainer.children.length;
+    updateBackground(currentIndex);
+    clickedImage = imageContainer.children[currentIndex];
+    clickedImage.classList.add('selected');
+    updatescrollbar(clickedImage);
+
+
+});
+
+nextButton.addEventListener('click', function () {
+    const previousIndex = currentIndex;
+        clickedImage = imageContainer.children[previousIndex];
+        clickedImage.classList.remove('selected');
+    currentIndex = (currentIndex + 1) % imageContainer.children.length;
+    updateBackground(currentIndex);
+    clickedImage = imageContainer.children[currentIndex];
+    clickedImage.classList.add('selected');
+    updatescrollbar(clickedImage);
+});
 };
 
 
@@ -191,5 +206,4 @@ if (document.cookie.includes('darkMode=true')) {
 
 submitSearch();
 toggleDarkMode();
-lemmeStyleTheImageContainerAndMakeTheArrowsWork()
-makeArrowButtonsWork();
+lemmeStyleTheImageContainerAndMakeTheArrowKeysWorkAndAlsoNowThisIncludesTheArrowButtons()

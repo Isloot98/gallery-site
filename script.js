@@ -185,3 +185,4 @@ if (document.cookie.includes('darkMode=true')) {
 }
 
 }
+toggleDarkMode();

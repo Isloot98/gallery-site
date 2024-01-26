@@ -108,13 +108,19 @@ document.addEventListener('keydown', function(event) {
         clickedImage.classList.add('selected');
 
         updateBackground(currentIndex);
+        updatescrollbar(clickedImage);
     }
 })
 };
 
 
-
-
+const updatescrollbar = (selectedImage) => {
+    selectedImage.scrollIntoView({
+        behavior:'smooth',
+        block: 'center',
+        inline: 'center'
+    })
+};
 
 
 
@@ -180,6 +186,9 @@ if (document.cookie.includes('darkMode=true')) {
 }
 
 }
+
+
+
 submitSearch();
 toggleDarkMode();
 lemmeStyleTheImageContainerAndMakeTheArrowsWork()
